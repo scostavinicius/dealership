@@ -33,6 +33,9 @@ public class Dealership {
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private User manager;
 
-    @OneToMany(mappedBy = "dealership", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "dealership", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Sale> sales;
+
+    @OneToMany(mappedBy = "dealership", cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Inventory> inventory;
 }

@@ -46,8 +46,11 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Sale> sales;
+
+    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Inventory> inventory;
 
     public enum Type {
         CAR,
