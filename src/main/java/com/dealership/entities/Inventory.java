@@ -1,9 +1,6 @@
 package com.dealership.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -26,4 +23,12 @@ public class Inventory {
     @Column(nullable = false)
     @Positive(message = "A quantidade deve ser um valor positivo.")
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "dealership_id", insertable = false, updatable = false)
+    private Dealership dealership;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id", insertable = false, updatable = false)
+    private Vehicle vehicle;
 }

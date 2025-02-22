@@ -38,9 +38,8 @@ public class User {
     private String password;
 
     @NotNull(message = "O papel do usuário não pode ser nulo.")
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(nullable = false, length = 20)
+    private String role;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Sale> sales;
@@ -50,7 +49,16 @@ public class User {
         USER;
     }
 
+    public Role getRole() {
+        return Role.valueOf(this.role);
+    }
+
+    public void setRole(Role role) {
+        this.role = role.name();
+    }
+
+
     public boolean isManager() {
-        return this.role == Role.MANAGER;
+        return getRole() == Role.MANAGER;
     }
 }

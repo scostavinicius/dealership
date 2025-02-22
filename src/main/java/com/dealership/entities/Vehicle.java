@@ -33,8 +33,7 @@ public class Vehicle {
 
     @NotNull(message = "O ano do veículo não pode ser nulo.")
     @Column(nullable = false)
-    @Min(value = 1886, message = "O ano deve ser maior ou igual a 1886.") // Primeiro carro criado em 1886
-    private Integer year;
+    private Integer vehicleYear;
 
     @NotNull(message = "O preço do veículo não pode ser nulo.")
     @Column(nullable = false)
@@ -42,19 +41,27 @@ public class Vehicle {
     private Double price;
 
     @NotNull(message = "O tipo do veículo não pode ser nulo.")
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Type type;
+    @Column(nullable = false, length = 20)
+    private String type;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Sale> sales;
 
-    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.REMOVE, CascadeType.MERGE,
+            CascadeType.PERSIST}, orphanRemoval = true)
     private List<Inventory> inventory;
 
     public enum Type {
         CAR,
         TRUCK,
         MOTORCYCLE;
+    }
+
+    public Type getType() {
+        return Type.valueOf(this.type);
+    }
+
+    public void setType(Type type) {
+        this.type = type.name();
     }
 }

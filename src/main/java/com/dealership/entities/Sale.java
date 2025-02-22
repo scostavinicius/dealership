@@ -23,15 +23,15 @@ public class Sale {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User customer_id;
+    private User customer;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dealership_id", referencedColumnName = "id", nullable = false)
-    private Dealership dealership_id;
+    private Dealership dealership;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "vehicle_id", referencedColumnName = "id", nullable = false)
-    private Vehicle vehicle_id;
+    private Vehicle vehicle;
 
     @Column(nullable = false)
     private LocalDate saleDate;
