@@ -19,5 +19,6 @@ public class DealershipDTO {
 
     public DealershipDTO(Dealership dealership) {
         BeanUtils.copyProperties(dealership, this);
+        this.managerId = (dealership.getManager() != null) ? dealership.getManager().getId() : null;
     }
 }
