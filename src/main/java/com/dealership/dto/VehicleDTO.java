@@ -14,7 +14,7 @@ public class VehicleDTO {
     private Long id;
     private String brand;
     private String model;
-    private Integer year;
+    private Integer vehicleYear;
     private Double price;
     private Vehicle.Type type;
 

@@ -21,13 +21,13 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserDTO> getAllUsers() {
+    public List<UserDTO> findAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map(user -> new UserDTO(user)).toList();
     }
 
     @Transactional(readOnly = true)
-    public UserDTO getUserById(Long id) {
+    public UserDTO findUserById(Long id) {
         User user = findEntitiesUtil.findUserById(id);
         return new UserDTO(user);
     }
