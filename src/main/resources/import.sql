@@ -2,6 +2,8 @@ INSERT INTO tb_user (name, email, password, role) VALUES ('Carlos Silva', 'carlo
 INSERT INTO tb_user (name, email, password, role) VALUES ('Ana Souza', 'ana@email.com', '123456', 'MANAGER');
 INSERT INTO tb_user (name, email, password, role) VALUES ('Marcos Lima', 'marcos@email.com', '123456', 'MANAGER');
 INSERT INTO tb_user (name, email, password, role) VALUES ('Fernanda Rocha', 'fernanda@email.com', '123456', 'MANAGER');
+INSERT INTO tb_user (name, email, password, role) VALUES ('Ricardo Pereira', 'ricardo@email.com', '123456', 'USER');
+INSERT INTO tb_user (name, email, password, role) VALUES ('Felipe Macedo', 'felipe@email.com', '123456', 'USER');
 
 INSERT INTO tb_vehicle (brand, model, vehicle_year, price, type) VALUES ('Toyota', 'Corolla', 2022, 120000.00, 'CAR');
 INSERT INTO tb_vehicle (brand, model, vehicle_year, price, type) VALUES ('Honda', 'Civic', 2021, 115000.00, 'CAR');
