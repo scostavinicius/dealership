@@ -88,6 +88,11 @@ public class DealershipService {
                     // Um usuário não pode ser gerente de duas concessionárias
                     "O usuário " + managerUpdate.getId() + " já é gerente de uma concessionária.");
         } else {
+            // O manager atual volta a ser um usuário
+            managerAtual.setRole(User.Role.USER);
+            userService.updateUser(managerAtual.getId(), new UserDTO(managerAtual));
+
+            // O novo manager tem sua role atualizada
             managerUpdate.setRole(User.Role.MANAGER);
             userService.updateUser(managerUpdate.getId(), new UserDTO(managerUpdate));
         }
