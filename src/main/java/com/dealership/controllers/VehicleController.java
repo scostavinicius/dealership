@@ -2,11 +2,9 @@ package com.dealership.controllers;
 
 import com.dealership.dto.VehicleDTO;
 import com.dealership.services.VehicleService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,24 @@ public class VehicleController {
     @GetMapping("/{id}")
     public ResponseEntity<VehicleDTO> findVehicleById(@PathVariable Long id) {
         return ResponseEntity.ok(vehicleService.findVehicleById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<VehicleDTO> createVehicle(@RequestBody VehicleDTO vehicleDTO) {
+        VehicleDTO newVehicle = vehicleService.createVehicle(vehicleDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newVehicle);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<VehicleDTO> updateVehicle(@PathVariable Long id,
+                                                    @RequestBody VehicleDTO vehicleUpdate) {
+        VehicleDTO updatedVehicle = vehicleService.updateVehicle(id, vehicleUpdate);
+        return ResponseEntity.ok(updatedVehicle);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
+        vehicleService.deleteVehicle(id);
+        return ResponseEntity.noContent().build();
     }
 }
