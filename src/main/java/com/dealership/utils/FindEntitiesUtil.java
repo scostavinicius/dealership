@@ -1,13 +1,7 @@
 package com.dealership.utils;
 
-import com.dealership.entities.Dealership;
-import com.dealership.entities.Sale;
-import com.dealership.entities.User;
-import com.dealership.entities.Vehicle;
-import com.dealership.repositories.DealershipRepository;
-import com.dealership.repositories.SaleRepository;
-import com.dealership.repositories.UserRepository;
-import com.dealership.repositories.VehicleRepository;
+import com.dealership.entities.*;
+import com.dealership.repositories.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,15 +9,18 @@ public class FindEntitiesUtil {
     private UserRepository userRepository;
     private DealershipRepository dealershipRepository;
     private VehicleRepository vehicleRepository;
+    private InventoryRepository inventoryRepository;
     private SaleRepository saleRepository;
 
     public FindEntitiesUtil(UserRepository userRepository,
                             DealershipRepository dealershipRepository,
                             VehicleRepository vehicleRepository,
+                            InventoryRepository inventoryRepository,
                             SaleRepository saleRepository) {
         this.userRepository = userRepository;
         this.dealershipRepository = dealershipRepository;
         this.vehicleRepository = vehicleRepository;
+        this.inventoryRepository = inventoryRepository;
         this.saleRepository = saleRepository;
     }
 
@@ -40,6 +37,11 @@ public class FindEntitiesUtil {
     public Vehicle findVehicleById(Long id) {
         return vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException(
                 "Veículo com ID " + id + " não foi encontrado."));
+    }
+
+    public Inventory findInventoryById(InventoryPK inventoryPK) {
+        return inventoryRepository.findById(inventoryPK).orElseThrow(() -> new RuntimeException(
+                "Estoque (Inventory) com ID " + inventoryPK + " não foi encontrado."));
     }
 
     public Sale findSaleById(Long id) {

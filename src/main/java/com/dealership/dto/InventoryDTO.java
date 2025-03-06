@@ -4,19 +4,19 @@ import com.dealership.entities.Inventory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class InventoryDTO {
 
-    private Long id;
     private Integer quantity;
-    private Long dealership;
-    private Long vehicle;
+    private Long dealershipId;
+    private Long vehicleId;
 
     public InventoryDTO(Inventory inventory) {
-        BeanUtils.copyProperties(inventory, this);
+        this.dealershipId = inventory.getId().getDealershipId();
+        this.vehicleId = inventory.getId().getVehicleId();
+        this.quantity = inventory.getQuantity();
     }
 }

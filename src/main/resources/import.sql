@@ -14,5 +14,12 @@ INSERT INTO tb_vehicle (brand, model, vehicle_year, price, type) VALUES ('Yamaha
 
 INSERT INTO tb_dealership (name, address, manager_id) VALUES ('AutoStar', 'Av. Paulista, 1000 - São Paulo, SP', 1);
 INSERT INTO tb_dealership (name, address, manager_id) VALUES ('CarMax', 'Rua XV de Novembro, 500 - Curitiba, PR', 2);
-INSERT INTO tb_dealership (name, address, manager_id) VALUES ('Top Motors', 'Av. Atlântica, 250 - Rio de Janeiro, RJ', 3);
-INSERT INTO tb_dealership (name, address, manager_id) VALUES ('MotoCenter', 'Rua das Motos, 88 - Belo Horizonte, MG', 4);
+INSERT INTO tb_dealership (name, address, manager_id) VALUES ('MotoCenter', 'Rua das Motos, 88 - Belo Horizonte, MG', 3);
+INSERT INTO tb_dealership (name, address, manager_id) VALUES ('Top Motors', 'Av. Atlântica, 250 - Rio de Janeiro, RJ', 4);
+
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (1, 3, 2);
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (1, 5, 3);
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (2, 1, 2);
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (2, 2, 3);
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (3, 4, 2);
+INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (3, 6, 3);
