@@ -109,6 +109,11 @@ public class DealershipService {
     @Transactional
     public void deleteDealership(Long id) {
         Dealership dealership = findEntitiesUtil.findDealershipById(id);
+
+        User manager = findEntitiesUtil.findUserById(dealership.getManager().getId());
+        manager.setRole(User.Role.USER);
+        userService.updateUser(manager.getId(), new UserDTO(manager));
+
         dealershipRepository.delete(dealership);
     }
 }
