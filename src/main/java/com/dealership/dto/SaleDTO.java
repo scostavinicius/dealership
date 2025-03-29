@@ -14,12 +14,16 @@ import java.time.LocalDate;
 public class SaleDTO {
 
     private Long id;
-    private Long customer_id;
-    private Long dealership_id;
-    private Long vehicle_id;
+    private Long customerId;
+    private Long dealershipId;
+    private Long vehicleId;
     private LocalDate saleDate;
 
     public SaleDTO(Sale sale) {
-        BeanUtils.copyProperties(sale, this);
+        this.id = sale.getId();
+        this.customerId = sale.getCustomer().getId();  // Mapear o ID do customer
+        this.dealershipId = sale.getDealership().getId();  // Mapear o ID do dealership
+        this.vehicleId = sale.getVehicle().getId();  // Mapear o ID do vehicle
+        this.saleDate = sale.getSaleDate();
     }
 }

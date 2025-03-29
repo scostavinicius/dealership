@@ -1,14 +1,7 @@
 package com.dealership.controllers;
 
 import com.dealership.dto.DealershipDTO;
-import com.dealership.dto.InventoryDTO;
-import com.dealership.entities.Dealership;
-import com.dealership.entities.Inventory;
-import com.dealership.entities.InventoryPK;
-import com.dealership.entities.Vehicle;
 import com.dealership.services.DealershipService;
-import com.dealership.services.InventoryService;
-import com.dealership.utils.FindEntitiesUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +13,9 @@ import java.util.List;
 public class DealershipController {
 
     private final DealershipService dealershipService;
-    private final InventoryService inventoryService;
-    private final FindEntitiesUtil findEntitiesUtil;
 
-    public DealershipController(DealershipService dealershipService,
-                                InventoryService inventoryService,
-                                FindEntitiesUtil findEntitiesUtil) {
+    public DealershipController(DealershipService dealershipService) {
         this.dealershipService = dealershipService;
-        this.inventoryService = inventoryService;
-        this.findEntitiesUtil = findEntitiesUtil;
     }
 
     @GetMapping

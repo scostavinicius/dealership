@@ -22,7 +22,7 @@ public class Sale {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private User customer;
 
     @ManyToOne(optional = false)

@@ -23,3 +23,7 @@ INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (2, 1, 2);
 INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (2, 2, 3);
 INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (3, 4, 2);
 INSERT INTO tb_inventory (dealership_id, vehicle_id, quantity) VALUES (3, 6, 3);
+
+INSERT INTO tb_sale (customer_id, dealership_id, vehicle_id, sale_date) VALUES (1, 1, 5, '2025-03-27');
+INSERT INTO tb_sale (customer_id, dealership_id, vehicle_id, sale_date) VALUES (2, 2, 1, '2025-03-28');
+INSERT INTO tb_sale (customer_id, dealership_id, vehicle_id, sale_date) VALUES (3, 3, 4, '2025-03-29');

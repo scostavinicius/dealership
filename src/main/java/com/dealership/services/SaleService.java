@@ -37,9 +37,9 @@ public class SaleService {
 
     @Transactional
     public SaleDTO createSale(SaleDTO saleDTO) {
-        User customer = findEntitiesUtil.findUserById(saleDTO.getCustomer_id());
-        Dealership dealership = findEntitiesUtil.findDealershipById(saleDTO.getDealership_id());
-        Vehicle vehicle = findEntitiesUtil.findVehicleById(saleDTO.getVehicle_id());
+        User customer = findEntitiesUtil.findUserById(saleDTO.getCustomerId());
+        Dealership dealership = findEntitiesUtil.findDealershipById(saleDTO.getDealershipId());
+        Vehicle vehicle = findEntitiesUtil.findVehicleById(saleDTO.getVehicleId());
 
         Sale sale = new Sale();
         sale.setCustomer(customer);
@@ -56,9 +56,9 @@ public class SaleService {
     public SaleDTO updateSale(Long id, SaleDTO saleUpdate) {
         Sale sale = findEntitiesUtil.findSaleById(id);
 
-        User customer = findEntitiesUtil.findUserById(saleUpdate.getCustomer_id());
-        Dealership dealership = findEntitiesUtil.findDealershipById(saleUpdate.getDealership_id());
-        Vehicle vehicle = findEntitiesUtil.findVehicleById(saleUpdate.getVehicle_id());
+        User customer = findEntitiesUtil.findUserById(saleUpdate.getCustomerId());
+        Dealership dealership = findEntitiesUtil.findDealershipById(saleUpdate.getDealershipId());
+        Vehicle vehicle = findEntitiesUtil.findVehicleById(saleUpdate.getVehicleId());
 
         sale.setCustomer(customer);
         sale.setDealership(dealership);

@@ -7,7 +7,6 @@ import com.dealership.entities.InventoryPK;
 import com.dealership.entities.Vehicle;
 import com.dealership.repositories.InventoryRepository;
 import com.dealership.utils.FindEntitiesUtil;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,10 +56,10 @@ public class InventoryService {
     }
 
     @Transactional
-    public InventoryDTO updateInventory(InventoryPK id, InventoryDTO inventoryUpdate) {
+    public InventoryDTO updateInventory(InventoryPK id, Integer quantity) {
         Inventory inventory = findEntitiesUtil.findInventoryById(id);
 
-        inventory.setQuantity(inventoryUpdate.getQuantity());
+        inventory.setQuantity(quantity);
 
         inventory = inventoryRepository.save(inventory);
 

@@ -1,7 +1,6 @@
 package com.dealership.controllers;
 
 import com.dealership.dto.SaleDTO;
-import com.dealership.entities.Sale;
 import com.dealership.services.SaleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +34,16 @@ public class SaleController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newSale);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<SaleDTO> updateSale(@PathVariable Long id,
+                                              @RequestBody SaleDTO saleUpdate) {
+        saleUpdate = saleService.updateSale(id, saleUpdate);
+        return ResponseEntity.ok(saleUpdate);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSale(@PathVariable Long id) {
+        saleService.deleteSale(id);
+        return ResponseEntity.noContent().build();
+    }
 }
