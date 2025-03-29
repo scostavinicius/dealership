@@ -18,13 +18,11 @@ public class Inventory {
     private InventoryPK id;
 
     @ManyToOne
-    @MapsId("dealershipId")
-    @JoinColumn(name = "dealership_id", nullable = false)
+    @JoinColumn(name = "dealership_id", nullable = false, insertable = false, updatable = false)
     private Dealership dealership;
 
     @ManyToOne
-    @MapsId("vehicleId")
-    @JoinColumn(name = "vehicle_id", nullable = false)
+    @JoinColumn(name = "vehicle_id", nullable = false, insertable = false, updatable = false)
     private Vehicle vehicle;
 
     @NotNull(message = "A quantidade de veículos não pode ser nula.")

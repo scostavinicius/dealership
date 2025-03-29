@@ -7,7 +7,6 @@ import com.dealership.entities.User;
 import com.dealership.repositories.DealershipRepository;
 import com.dealership.repositories.UserRepository;
 import com.dealership.utils.FindEntitiesUtil;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,12 +50,7 @@ public class DealershipService {
             throw new RuntimeException(
                     // Um usuário não pode ser gerente de duas concessionárias
                     "O usuário " + manager.getId() + " já é gerente de uma concessionária.");
-        }
-//        if (manager.getId() == null) {
-//            manager.setRole(User.Role.MANAGER);
-//            manager = userRepository.save(manager);
-//        }
-        else {
+        } else {
             manager.setRole(User.Role.MANAGER);
             userService.updateUser(manager.getId(), new UserDTO(manager));
         }

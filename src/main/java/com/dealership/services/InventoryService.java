@@ -1,8 +1,10 @@
 package com.dealership.services;
 
 import com.dealership.dto.InventoryDTO;
+import com.dealership.entities.Dealership;
 import com.dealership.entities.Inventory;
 import com.dealership.entities.InventoryPK;
+import com.dealership.entities.Vehicle;
 import com.dealership.repositories.InventoryRepository;
 import com.dealership.utils.FindEntitiesUtil;
 import org.springframework.stereotype.Service;
@@ -32,5 +34,42 @@ public class InventoryService {
     public InventoryDTO findInventoryById(InventoryPK inventoryPK) {
         Inventory inventory = findEntitiesUtil.findInventoryById(inventoryPK);
         return new InventoryDTO(inventory);
+    }
+
+    @Transactional
+    public InventoryDTO createInventory(InventoryDTO inventoryDTO) {
+        Dealership dealership = findEntitiesUtil.findDealershipById(inventoryDTO.getDealershipId());
+        Vehicle vehicle = findEntitiesUtil.findVehicleById(inventoryDTO.getVehicleId());
+
+        Inventory inventory = new Inventory();
+        InventoryPK inventoryPK =
+                new InventoryPK(inventoryDTO.getDealershipId(), inventoryDTO.getVehicleId());
+        
+        inventory.setId(inventoryPK);
+        inventory.setDealership(dealership);
+        inventory.setVehicle(vehicle);
+        inventory.setQuantity(inventoryDTO.getQuantity());
+
+        inventory = inventoryRepository.save(inventory);
+
+        return new InventoryDTO(inventory);
+    }
+
+    // TODO: Organizar a implementação do update do inventory
+    @Transactional
+    public InventoryDTO updateInventory(InventoryPK id, InventoryDTO inventoryUpdate) {
+        Inventory inventory = findEntitiesUtil.findInventoryById(id);
+
+        inventory.setQuantity(inventoryUpdate.getQuantity());
+
+        inventory = inventoryRepository.save(inventory);
+
+        return new InventoryDTO(inventory);
+    }
+
+    @Transactional
+    public void deleteInventory(InventoryPK inventoryPK) {
+        Inventory inventory = findEntitiesUtil.findInventoryById(inventoryPK);
+        inventoryRepository.delete(inventory);
     }
 }
