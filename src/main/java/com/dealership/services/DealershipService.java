@@ -16,16 +16,13 @@ import java.util.List;
 public class DealershipService {
 
     private final DealershipRepository dealershipRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
     private final FindEntitiesUtil findEntitiesUtil;
 
     public DealershipService(DealershipRepository dealershipRepository,
-                             UserRepository userRepository,
                              UserService userService,
                              FindEntitiesUtil findEntitiesUtil) {
         this.dealershipRepository = dealershipRepository;
-        this.userRepository = userRepository;
         this.userService = userService;
         this.findEntitiesUtil = findEntitiesUtil;
     }

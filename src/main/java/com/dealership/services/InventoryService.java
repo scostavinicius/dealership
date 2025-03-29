@@ -7,6 +7,7 @@ import com.dealership.entities.InventoryPK;
 import com.dealership.entities.Vehicle;
 import com.dealership.repositories.InventoryRepository;
 import com.dealership.utils.FindEntitiesUtil;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,7 +45,7 @@ public class InventoryService {
         Inventory inventory = new Inventory();
         InventoryPK inventoryPK =
                 new InventoryPK(inventoryDTO.getDealershipId(), inventoryDTO.getVehicleId());
-        
+
         inventory.setId(inventoryPK);
         inventory.setDealership(dealership);
         inventory.setVehicle(vehicle);
@@ -55,7 +56,6 @@ public class InventoryService {
         return new InventoryDTO(inventory);
     }
 
-    // TODO: Organizar a implementação do update do inventory
     @Transactional
     public InventoryDTO updateInventory(InventoryPK id, InventoryDTO inventoryUpdate) {
         Inventory inventory = findEntitiesUtil.findInventoryById(id);
@@ -71,5 +71,43 @@ public class InventoryService {
     public void deleteInventory(InventoryPK inventoryPK) {
         Inventory inventory = findEntitiesUtil.findInventoryById(inventoryPK);
         inventoryRepository.delete(inventory);
+    }
+
+    public InventoryDTO addVehicleToInventory(Long dealershipId, Long vehicleId, Integer quantity) {
+        Dealership dealership = findEntitiesUtil.findDealershipById(dealershipId);
+        Vehicle vehicle = findEntitiesUtil.findVehicleById(vehicleId);
+
+        InventoryPK inventoryPK = new InventoryPK(dealershipId, vehicleId);
+        Inventory inventory = inventoryRepository.findById(inventoryPK).orElse(null);
+
+        if (inventory != null) {
+            inventory.setQuantity(inventory.getQuantity() + quantity);
+        } else {
+            inventory = new Inventory();
+            inventory.setId(inventoryPK);
+            inventory.setDealership(dealership);
+            inventory.setVehicle(vehicle);
+            inventory.setQuantity(quantity);
+        }
+
+        inventory = inventoryRepository.save(inventory);
+        return new InventoryDTO(inventory);
+    }
+
+    public InventoryDTO removeVehicleFromInventory(Long dealershipId,
+                                                   Long vehicleId,
+                                                   Integer quantity) {
+        InventoryPK inventoryPK = new InventoryPK(dealershipId, vehicleId);
+        Inventory inventory = findEntitiesUtil.findInventoryById(inventoryPK);
+
+        inventory.setQuantity(inventory.getQuantity() - quantity);
+
+        if (inventory.getQuantity() == 0) {
+            inventoryRepository.delete(inventory);
+            return null;
+        }
+
+        inventory = inventoryRepository.save(inventory);
+        return new InventoryDTO(inventory);
     }
 }
