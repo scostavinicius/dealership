@@ -71,8 +71,8 @@ Para rodar a API localmente, siga os passos abaixo:
 - **GET /inventories**: Retorna todos os inventários.
 - **GET /inventories/{dealershipId}/{vehicleId}**: Retorna um estoque pelo ID da concessionária e ID do veículo (chave
   composta).
-- **PATCH /inventories/{dealershipId}/{vehicleId}/add**: Adiciona um veículo ao estoque.
-- **PATCH /inventories/{dealershipId}/{vehicleId}/remove**: Remove um veículo do estoque.
+- **PATCH /inventories/{dealershipId}/{vehicleId}/add**: Adiciona uma quantidade de veículos ao estoque.
+- **PATCH /inventories/{dealershipId}/{vehicleId}/remove**: Remove uma quantidade de veículos do estoque.
 
 ### Sales
 
