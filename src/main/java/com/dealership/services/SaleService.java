@@ -16,10 +16,14 @@ import java.util.List;
 public class SaleService {
 
     private final SaleRepository saleRepository;
+    private final InventoryService inventoryService;
     private final FindEntitiesUtil findEntitiesUtil;
 
-    public SaleService(SaleRepository saleRepository, FindEntitiesUtil findEntitiesUtil) {
+    public SaleService(SaleRepository saleRepository,
+                       InventoryService inventoryService,
+                       FindEntitiesUtil findEntitiesUtil) {
         this.saleRepository = saleRepository;
+        this.inventoryService = inventoryService;
         this.findEntitiesUtil = findEntitiesUtil;
     }
 
@@ -49,23 +53,7 @@ public class SaleService {
 
         sale = saleRepository.save(sale);
 
-        return new SaleDTO(sale);
-    }
-
-    @Transactional
-    public SaleDTO updateSale(Long id, SaleDTO saleUpdate) {
-        Sale sale = findEntitiesUtil.findSaleById(id);
-
-        User customer = findEntitiesUtil.findUserById(saleUpdate.getCustomerId());
-        Dealership dealership = findEntitiesUtil.findDealershipById(saleUpdate.getDealershipId());
-        Vehicle vehicle = findEntitiesUtil.findVehicleById(saleUpdate.getVehicleId());
-
-        sale.setCustomer(customer);
-        sale.setDealership(dealership);
-        sale.setVehicle(vehicle);
-        sale.setSaleDate(saleUpdate.getSaleDate());
-
-        sale = saleRepository.save(sale);
+        inventoryService.removeVehicleFromInventory(dealership.getId(), vehicle.getId(), 1);
 
         return new SaleDTO(sale);
     }

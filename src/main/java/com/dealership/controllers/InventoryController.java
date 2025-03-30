@@ -38,29 +38,6 @@ public class InventoryController {
         return ResponseEntity.ok(inventoryService.findInventoryById(inventoryPK));
     }
 
-    @PostMapping
-    public ResponseEntity<InventoryDTO> createInventory(@RequestBody InventoryDTO inventoryDTO) {
-        InventoryDTO newInventory = inventoryService.createInventory(inventoryDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newInventory);
-    }
-
-    @PutMapping("/{dealershipId}/{vehicleId}")
-    public ResponseEntity<InventoryDTO> updateInventory(@PathVariable Long dealershipId,
-                                                        @PathVariable Long vehicleId,
-                                                        @RequestBody Integer quantity) {
-        InventoryPK inventoryPK = new InventoryPK(dealershipId, vehicleId);
-        InventoryDTO inventoryUpdate = inventoryService.updateInventory(inventoryPK, quantity);
-        return ResponseEntity.ok(inventoryUpdate);
-    }
-
-    @DeleteMapping("/{dealershipId}/{vehicleId}")
-    public ResponseEntity<Void> deleteInventory(@PathVariable Long dealershipId,
-                                                @PathVariable Long vehicleId) {
-        InventoryPK inventoryPK = new InventoryPK(dealershipId, vehicleId);
-        inventoryService.deleteInventory(inventoryPK);
-        return ResponseEntity.noContent().build();
-    }
-
     @PatchMapping("/{dealershipId}/{vehicleId}/add")
     public ResponseEntity<InventoryDTO> addVehicleToInventory(@PathVariable Long dealershipId,
                                                               @PathVariable Long vehicleId,
