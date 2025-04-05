@@ -1,4 +1,4 @@
-package com.dealership.entities;
+package com.dealership.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -36,6 +36,8 @@ public class Dealership {
     @OneToMany(mappedBy = "dealership", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Sale> sales;
 
-    @OneToMany(mappedBy = "dealership", cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "dealership",
+               cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST},
+               orphanRemoval = true)
     private List<Inventory> inventory;
 }

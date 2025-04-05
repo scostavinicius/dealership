@@ -1,6 +1,6 @@
 package com.dealership.dto;
 
-import com.dealership.entities.Inventory;
+import com.dealership.entity.Inventory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,7 +1,7 @@
-package com.dealership.repositories;
+package com.dealership.repository;
 
-import com.dealership.entities.Inventory;
-import com.dealership.entities.InventoryPK;
+import com.dealership.entity.Inventory;
+import com.dealership.entity.InventoryPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InventoryRepository extends JpaRepository<Inventory, InventoryPK> {

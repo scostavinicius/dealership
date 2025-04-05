@@ -1,6 +1,6 @@
-package com.dealership.repositories;
+package com.dealership.repository;
 
-import com.dealership.entities.User;
+import com.dealership.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

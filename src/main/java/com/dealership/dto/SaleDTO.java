@@ -1,10 +1,9 @@
 package com.dealership.dto;
 
-import com.dealership.entities.Sale;
+import com.dealership.entity.Sale;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 

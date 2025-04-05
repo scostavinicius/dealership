@@ -1,7 +1,7 @@
 package com.dealership.dto;
 
 
-import com.dealership.entities.Dealership;
+import com.dealership.entity.Dealership;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

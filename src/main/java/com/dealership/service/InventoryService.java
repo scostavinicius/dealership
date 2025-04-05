@@ -1,12 +1,12 @@
-package com.dealership.services;
+package com.dealership.service;
 
 import com.dealership.dto.InventoryDTO;
-import com.dealership.entities.Dealership;
-import com.dealership.entities.Inventory;
-import com.dealership.entities.InventoryPK;
-import com.dealership.entities.Vehicle;
-import com.dealership.repositories.InventoryRepository;
-import com.dealership.utils.FindEntitiesUtil;
+import com.dealership.entity.Dealership;
+import com.dealership.entity.Inventory;
+import com.dealership.entity.InventoryPK;
+import com.dealership.entity.Vehicle;
+import com.dealership.repository.InventoryRepository;
+import com.dealership.util.FindEntitiesUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

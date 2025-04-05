@@ -1,11 +1,10 @@
-package com.dealership.controllers;
+package com.dealership.controller;
 
 import com.dealership.dto.InventoryDTO;
-import com.dealership.entities.Inventory;
-import com.dealership.entities.InventoryPK;
-import com.dealership.services.InventoryService;
-import com.dealership.utils.FindEntitiesUtil;
-import org.springframework.http.HttpStatus;
+import com.dealership.entity.Inventory;
+import com.dealership.entity.InventoryPK;
+import com.dealership.service.InventoryService;
+import com.dealership.util.FindEntitiesUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

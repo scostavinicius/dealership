@@ -1,4 +1,4 @@
-package com.dealership.entities;
+package com.dealership.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

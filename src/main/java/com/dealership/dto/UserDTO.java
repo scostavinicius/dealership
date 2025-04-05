@@ -1,6 +1,6 @@
 package com.dealership.dto;
 
-import com.dealership.entities.User;
+import com.dealership.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +17,7 @@ public class UserDTO {
     private String password;
     private User.Role role;
 
-    public  UserDTO(User user) {
+    public UserDTO(User user) {
         BeanUtils.copyProperties(user, this);
     }
 }

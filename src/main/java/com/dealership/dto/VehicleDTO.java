@@ -1,6 +1,6 @@
 package com.dealership.dto;
 
-import com.dealership.entities.Vehicle;
+import com.dealership.entity.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

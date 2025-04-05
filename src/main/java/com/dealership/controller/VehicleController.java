@@ -1,7 +1,7 @@
-package com.dealership.controllers;
+package com.dealership.controller;
 
 import com.dealership.dto.VehicleDTO;
-import com.dealership.services.VehicleService;
+import com.dealership.service.VehicleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
